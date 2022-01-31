@@ -1,0 +1,51 @@
+#include <iostream>
+
+using namespace std;
+void SelectSort(int A[],int n)
+{
+    for(int i=0;i<n-1;i++)
+    {
+        int I_min=i;                           //ith element will be the minimum element
+        
+             for(int j=i+1;j<n;j++)
+             {
+                  
+                 if(A[j]<A[I_min])            //comparison of A[I_min]and A[j]
+                 {
+                     I_min=j;                 //if yes then it is equal to it.
+                 }                
+             }
+
+        /*Swapping*/
+        int temp=A[i];
+        A[i]=A[I_min];
+        A[I_min] = temp;
+    }
+    
+    
+}
+
+int main()
+{
+    
+    
+    int m;
+    int A[m];
+    
+    cout<<"Enter the number ";
+    cin>>m;
+    
+    for(int j=0;j<m;j++)
+    {
+        cin>>A[j];
+        
+    }
+    
+    SelectSort(A,m);
+    for(int i=0;i<m;i++)
+    {
+        cout<<A[i]<<" ";
+    }
+
+    return 0;
+}
