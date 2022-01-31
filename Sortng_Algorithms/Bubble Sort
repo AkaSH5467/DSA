@@ -1,0 +1,39 @@
+#include<iostream>    
+using namespace std;    
+   
+ void bubble(int a[], int n) // function to implement bubble sort  
+ {  
+ int counter=1;
+ while(counter<(n-1))                                                   // we are doing this , so that iteration can be done only in the unsorted position
+ {
+     for(int i=0;i<n-counter;i++)
+     {
+         if(a[i]>a[i+1])                                                // comparison
+         {
+             int temp=a[i];                                             //swap
+             a[i]=a[i+1];
+             a[i+1]=temp;
+         }
+     }
+     
+     counter++;
+ }
+    
+ }  
+int main()
+{
+    int m;
+    cin>>m;
+    int A[m];
+    for(int i=0;i<m;i++)
+    {
+        cin>>A[i];
+    }
+   bubble(A,m);
+     for(int i=0;i<m;i++)
+    {
+        cout<<A[i]<<" ";
+    }
+
+    return 0;
+}
