@@ -1,0 +1,118 @@
+#include <iostream>
+
+using namespace std;
+
+
+
+
+
+
+void merge(int a[],int beg,int mid,int end)
+{
+    int b[100];            //one dupilicate array
+    int i=beg;             //initialize i form beginning-first half
+    int j=mid+1;           //initialize j from mid-half - end;
+    int k=beg;             // initialize k as iterator of array b
+    
+    while(i<=mid&&j<=end)      //if i and j are not exausted and have few iteration left, may proceed
+    {
+        //comparing the arrays before merging 
+        
+        if(a[i]<a[j])         //if left subarray element is smaller then
+        {
+            b[k]=a[i];i++;    // put it in the duplicate array b, and incerement the iterator i
+        }
+        else                 //if right subarray element  is smaller then
+        {
+            b[k]=a[j];          // put it in the duplicate array b, and increment the iterator j
+            j++;
+        }
+        
+        k++;                    //increment iterator k
+    }
+    
+    if(i>mid)                    //if i is greater than mid
+    {
+        while(j<=end)              //loop goes in right subarray , if the condition is fullfiled then the code runs
+        {
+            b[k]=a[j];             // copying element
+            k++;j++;               // incrementing the iterators
+        }
+    }
+    
+    else{                          // if i is less than mid
+        while(i<=mid)           //loop goes in the left subarray
+        {
+            b[k]=a[i];         //copying element
+            k++;i++;           // incrementing the iterators
+        }
+    }
+    
+    for(k=beg;k<=end;k++)           // full copybazzi
+    {
+        a[k]=b[k];
+    }
+    
+   
+    
+}
+
+
+
+
+
+
+
+
+
+void M_Sort(int a[],int beg,int end) 
+{
+    if(beg<end)                   //checks beginning is greater than end
+    {
+        int mid=(beg+end)/2; // finding mid point
+        M_Sort(a,beg,mid);               // for first half, array, beginner , mid
+        M_Sort(a,mid+1,end);              // for the second half array , mid+1,end
+        merge(a,beg,mid,end);             //merge  array,beg,mid,end
+        
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+ 
+void print(int a[],int m)               // print array
+{
+     for(int p=0;p<m;p++)
+    {
+        cout<<a[p]<<" ";
+    }
+}
+
+
+
+
+
+
+int main()
+{
+    int a[10]={1,10,5,3,6,2,11,13,51,49};
+    int n = sizeof(a)/sizeof(a[0]);            //size calculation
+    cout<<"Before Sorting"<<endl;
+    print(a,n);
+    cout<<endl;
+    
+    M_Sort(a,0,n-1);
+    
+    cout<<"After Sort"<<endl;
+    
+    print(a,n);
+    
+    return 0;
+}
