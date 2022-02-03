@@ -67,7 +67,7 @@ void merge(int a[],int beg,int mid,int end)
 
 void M_Sort(int a[],int beg,int end) 
 {
-    if(beg<end)                   //checks beginning is greater than end
+    if(beg<end)                   //checks beginning is greater than end  //silly mistake area
     {
         int mid=(beg+end)/2; // finding mid point
         M_Sort(a,beg,mid);               // for first half, array, beginner , mid
