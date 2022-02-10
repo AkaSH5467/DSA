@@ -1,0 +1,54 @@
+
+#include <iostream>
+
+using namespace std;
+
+struct Node{
+    int data;
+    Node *link;
+};
+
+Node *head =NULL;
+
+void InsBEg(int d)
+{
+    Node *ptr=new Node();
+    ptr->data=d;
+    ptr->link=head;
+    head=ptr;
+}
+
+
+
+void PrintLL(Node *head)
+{
+    Node *curr=head;
+    while(curr!=NULL)
+    {
+        cout<<curr->data<<" -> ";
+        curr=curr->link;
+    }
+    
+    cout<<"NULL"<<endl;
+    
+}
+
+
+int main()
+{
+    int m,n;
+    cout<<"Enter the number of elements to be included"<<endl;
+    cin>>m;
+    for(int i=0;i<=m-1;i++)
+    {
+        cout<<"Enter the "<<i<<"th Number"<<endl;
+        cin>>n;
+        InsBEg(n);
+    }
+
+    
+    PrintLL(head);
+    
+
+    return 0;
+}
