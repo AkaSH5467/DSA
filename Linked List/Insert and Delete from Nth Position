@@ -43,13 +43,13 @@ void Delete(int n)
     }
     
     
-        for(int i=0;i<n-2;i++)
-        {
-            ptr=ptr->link;
-            Node *ptr2=ptr->link;
-            ptr->link=ptr2->link;
-            free(ptr2);
-        }
+    for(int i=0;i<n-2;i++)
+    {
+        ptr=ptr->link;
+    }
+    Node *ptr2=ptr->link;
+    ptr->link=ptr2->link;
+    free(ptr2);
     
 }
 
