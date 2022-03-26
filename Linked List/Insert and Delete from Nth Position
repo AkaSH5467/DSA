@@ -1,0 +1,92 @@
+
+#include <iostream>
+
+using namespace std;
+struct Node{
+    int data;
+    Node *link;
+};
+Node *head=NULL;
+
+void insert(int d)
+{
+    Node *temp=new Node();
+    temp->data=d;
+    temp->link=NULL;
+  /*  head=temp;*/
+    
+    if(head==NULL)
+    {
+        cout<<"Empty List, Keep Going"<<endl;
+        head=temp;
+    }
+    else{
+        Node *ptr = head;
+        while(ptr->link!=NULL)
+        {
+            ptr=ptr->link;
+        }
+        
+        ptr->link=temp;
+    }
+    
+}
+
+void Delete(int n)
+{
+    Node *ptr = head;
+    if(n==1)
+    {
+        head=ptr->link;
+        free(ptr);
+        return;
+    }
+    
+    
+        for(int i=0;i<n-2;i++)
+        {
+            ptr=ptr->link;
+            Node *ptr2=ptr->link;
+            ptr->link=ptr2->link;
+            free(ptr2);
+        }
+    
+}
+
+void Print(Node *head)
+{
+    Node *trav=head;
+    while(trav!=NULL)
+    {
+        cout<<trav->data<<"->";
+        trav=trav->link;
+        
+    }
+    cout<<"NULL"<<endl;
+}
+
+int main()
+{
+    int n,p,t;
+   cout<<"Enter the Numbers: ";
+   cin>>n;
+   
+   for(int i=0;i<n;i++)
+   {
+       cout<<"Enter the NUmber : ";
+       cin>>t;
+       insert(t);
+   }
+   
+   cout<<"These is your List"<<endl;;
+   Print(head);
+   cout<<"Delete at Position: ";
+   cin>>p;
+   
+   Delete(p);
+  
+   cout<<"List after Deletion"<<endl;
+   Print(head);
+
+    return 0;
+}
