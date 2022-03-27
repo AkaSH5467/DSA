@@ -1,0 +1,102 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <iostream>
+
+
+using namespace std;
+
+struct Node{
+    int data;
+    Node *link;
+};
+
+Node *head=NULL;
+
+void InsEnd(int d)
+{
+    Node *ptr = new Node();
+    ptr->data=d;
+    ptr->link=NULL;
+    
+    if(head==NULL)
+    {
+        cout<<"Empty, keep going"<<endl;
+        head=ptr;
+    }
+    else
+    {
+        Node *temp=head;
+        while(temp->link!=NULL)
+        {
+            temp=temp->link;
+        }
+        
+        temp->link=ptr;
+    }
+}
+
+void DelEnd()
+{
+   if(head==NULL)
+   {
+       cout<<"Empty List"<<endl;
+       
+   }
+   
+   if(head->link==NULL)
+   {
+       delete head;
+       head=NULL;
+       cout<<"Had one element , List is Empty Now";
+       
+   }
+   else{
+       Node *slow=head;
+       Node *fast=head->link;
+       
+       while(fast->link!=NULL)
+       {
+           slow=fast;
+           fast=fast->link;
+           
+       }
+       
+       delete fast;
+       slow->link=NULL;
+   }
+   
+}
+
+void print(Node *head)
+{
+    Node *curr=head;
+    while(curr!=NULL)
+    {
+        cout<<curr->data<<" -> ";
+        curr=curr->link;
+    }
+    
+    cout<<"NULL"<<endl;
+    
+}
+
+int main()
+{
+    InsEnd(10);
+    InsEnd(45);
+    InsEnd(33);
+    InsEnd(56);
+    InsEnd(10);
+    print(head);
+    
+    DelEnd();
+    
+    print(head);
+
+}
