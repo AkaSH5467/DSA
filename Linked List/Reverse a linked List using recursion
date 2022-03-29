@@ -1,0 +1,75 @@
+#include <iostream>
+
+using namespace std;
+
+struct Node{
+    int data;
+    Node *link;
+    
+};
+Node *head=NULL;
+
+
+void InsEnd(int d)
+{
+    Node *ptr = new Node();
+    ptr->data=d;
+    ptr->link=NULL;
+    
+    if(head==NULL)
+    {
+        
+        head=ptr;
+    }
+    else
+    {
+        Node *temp=head;
+        while(temp->link!=NULL)
+        {
+            temp=temp->link;
+        }
+        
+        temp->link=ptr;
+    }
+}
+
+void Rev(Node *p)
+{
+    if(p->link==NULL){
+        head=p;
+        
+        return;
+        
+    }
+    
+    Rev(p->link);
+    Node *q=p->link;
+    q->link=p;
+    p->link=NULL;
+}
+
+void PrintLL(Node *head)
+{
+    Node *curr=head;
+    while(curr!=NULL)
+    {
+        cout<<curr->data<<" -> ";
+        curr=curr->link;
+    }
+    
+    cout<<"NULL"<<endl;
+}
+
+int main(){
+    InsEnd(20);
+    InsEnd(30);
+    InsEnd(40);
+    InsEnd(50);
+    InsEnd(60);
+    
+    PrintLL(head);
+    
+     Rev(head);
+   
+   PrintLL(head);
+}
