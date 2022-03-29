@@ -81,7 +81,7 @@ int main()
 
     
     
-   RevPrint(head);
+   Print(head);
 
     return 0;
 }
