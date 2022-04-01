@@ -1,0 +1,49 @@
+#include <iostream>
+using namespace std;
+
+struct Node{
+    int data;
+    Node *prev=NULL;
+    Node *link=NULL;
+};
+
+Node *head=NULL;
+
+void InsBeg(int d)
+{
+    Node *temp=new Node();
+    temp->data=d;
+    temp->prev=NULL;
+    temp->link=head;
+    
+    if(head==NULL){
+        head=temp;
+    }
+    
+     head->prev = temp ;
+   head = temp;
+}
+
+void Print(Node *head)
+{
+    Node *temp= head;
+    while(temp!=NULL){
+        cout<<temp->data<<"->";
+        temp=temp->link;
+        
+    }
+    cout<<"NULL";
+    cout<<endl;
+    
+}
+
+
+int main()
+{
+    InsBeg(2);
+    InsBeg(4);
+    InsBeg(43);
+    InsBeg(22);
+    Print(head);
+    return 0;
+}
