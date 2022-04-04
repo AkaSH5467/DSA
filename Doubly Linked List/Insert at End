@@ -1,0 +1,109 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <iostream>
+
+using namespace std;
+struct Node{
+    int data;
+    Node *prev;
+    Node *link;
+};
+Node *head=NULL;
+Node *tail;
+
+void insert(int d)
+{
+    Node *ptr=new Node();
+    ptr->data=d;
+    ptr->prev=NULL;
+    
+    
+    if(head==NULL)
+    {
+        head=ptr;
+        return;
+    }
+    
+    head->prev=ptr;
+    ptr->link=head;
+   
+    head=ptr;
+}
+
+void InsEnd( int new_data)
+{
+   //allocate memory for node
+   struct Node* newNode = new Node;
+  
+   struct Node* last = head; //set last node value to head
+  
+   //set data for new node
+   newNode->data = new_data;
+  
+   //new node is the last node , so set next of new node to null
+   newNode->link = NULL;
+  
+   //check if list is empty, if yes make new node the head of list
+   if (head == NULL) {
+   newNode->prev = NULL;
+   head = newNode;
+    return;
+}
+  
+//otherwise traverse the list to go to last node
+while (last->link != NULL)
+last = last->link;
+  
+//set next of last to new node
+last->link = newNode;
+  
+//set last to prev of new node
+newNode->prev = last;
+return;
+}
+void rev(){
+    Node *temp=head;
+    if(temp==NULL){
+        return;
+    }
+    
+    while(temp->link!=NULL){
+        temp=temp->link;
+    }
+    
+    cout<<"Reverse"<<endl;
+    while(temp!=NULL){
+        cout<<temp->data<<" ";
+        temp=temp->prev;
+    }
+}
+
+void Print(Node *head)
+{
+    Node *temp= head;
+    while(temp!=NULL){
+        cout<<temp->data<<"->";
+        temp=temp->link;
+        
+    }
+    cout<<"NULL";
+    cout<<endl;
+    
+}
+
+int main()
+{
+    InsEnd(23);
+    InsEnd(22);
+    InsEnd(20);
+   
+   Print(head);
+
+    return 0;
+}
