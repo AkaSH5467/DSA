@@ -90,3 +90,99 @@ int main()
 
     return 0;
 }
+
+/*
+#include <iostream>
+
+using namespace std;
+
+struct Node{
+    int data;
+    Node *link;
+};
+Node *head=NULL;
+void InsN(int d,int n){
+    Node *ptr=new Node();
+    ptr->data=d;
+    ptr->link=NULL;
+    
+    if(head==NULL){
+        ptr->link=head;
+        head=ptr;
+    }
+    
+    Node *temp= head;
+    for(int i=1;i<n-2;i++){
+        
+        temp=temp->link;
+        
+    }
+    
+    ptr->link=temp->link;
+    temp->link=ptr;
+}
+
+void DelN(int n)
+
+
+{
+    Node *temp=head;
+    if(n==1){
+        head=temp->link;
+        free(temp);
+    }
+    
+    for(int i=0;i<n-2;i++)
+    {
+        temp=temp->link;
+    }
+    Node *temp1;
+    temp1=temp->link;
+    temp->link=temp1->link;
+    free(temp1);
+}
+
+void InsBEg(int d)
+{
+    Node *ptr=new Node();
+    ptr->data=d;
+    ptr->link=head;
+    head=ptr;
+}
+
+void PrintLL(Node *head)
+{
+    Node *curr=head;
+    while(curr!=NULL)
+    {
+        cout<<curr->data<<" -> ";
+        curr=curr->link;
+    }
+    
+    cout<<"NULL"<<endl;
+    
+}
+
+
+int main()
+{
+    InsBEg(10);
+    InsBEg(20);
+    InsBEg(30);
+    InsBEg(40);
+    
+    int m;
+    
+    /*cout<<"Enter the data to enter"<<endl;
+    cin>>m;
+    cout<<"Enter the position"<<endl;
+    cin>>p;
+    InsN(m,p);*/
+    cout<<"Enter the position to delete"<<endl;
+    cin>>m;
+    DelN(m);
+    PrintLL(head);
+
+    return 0;
+}
+*/
