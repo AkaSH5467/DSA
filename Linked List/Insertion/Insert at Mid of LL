@@ -1,0 +1,71 @@
+
+#include <iostream>
+
+using namespace std;
+
+struct Node{
+    int data;
+    Node *link;
+};
+Node *head=NULL;
+void InsN(int d,int n){
+    Node *ptr=new Node();
+    ptr->data=d;
+    ptr->link=NULL;
+    
+    if(head==NULL){
+        ptr->link=head;
+        head=ptr;
+    }
+    
+    Node *temp= head;
+    for(int i=1;i<n-2;i++){
+        
+        temp=temp->link;
+        
+    }
+    
+    ptr->link=temp->link;
+    temp->link=ptr;
+}
+
+void InsBEg(int d)
+{
+    Node *ptr=new Node();
+    ptr->data=d;
+    ptr->link=head;
+    head=ptr;
+}
+
+void PrintLL(Node *head)
+{
+    Node *curr=head;
+    while(curr!=NULL)
+    {
+        cout<<curr->data<<" -> ";
+        curr=curr->link;
+    }
+    
+    cout<<"NULL"<<endl;
+    
+}
+
+
+int main()
+{
+    InsBEg(10);
+    InsBEg(20);
+    InsBEg(30);
+    InsBEg(40);
+    
+    int m,p;
+    
+    cout<<"Enter the data to enter"<<endl;
+    cin>>m;
+    cout<<"Enter the position"<<endl;
+    cin>>p;
+    InsN(m,p);
+    PrintLL(head);
+
+    return 0;
+}
