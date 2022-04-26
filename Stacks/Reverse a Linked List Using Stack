@@ -1,0 +1,75 @@
+#include <iostream>
+#include<stack>
+
+using namespace std;
+
+struct Node{
+    int data;
+    Node *link;
+};
+Node *head =NULL;
+
+void InsBEg(int d)
+{
+    Node *ptr=new Node();
+    ptr->data=d;
+    ptr->link=head;
+    head=ptr;
+}
+
+void PrintLL(Node *head)
+{
+    Node *curr=head;
+    while(curr!=NULL)
+    {
+        cout<<curr->data<<" -> ";
+        curr=curr->link;
+    }
+    
+    cout<<"NULL"<<endl;
+    
+}
+/********************************************************************************************************************************************/
+void Rev()
+{
+    if(head==NULL||head->link==NULL)
+    {
+        return;
+    }
+    
+    stack<struct Node*> S;
+    
+    Node *temp=head;
+    while(temp!=NULL)
+    {
+        S.push(temp);
+        temp=temp->link;
+        
+    }
+    
+    temp=S.top();
+    head=temp;
+    S.pop();
+    
+    while(!S.empty()){
+        temp->link=S.top();
+        S.pop();
+        temp=temp->link;
+        
+    }
+    temp->link=NULL;
+}
+/************************************************************************************************************************************************/
+int main()
+{
+    InsBEg(10);
+    InsBEg(4);
+    InsBEg(6);
+    InsBEg(96);
+    InsBEg(33);
+    InsBEg(34);
+     PrintLL(head);
+    Rev();
+    PrintLL(head);
+}
+ 
