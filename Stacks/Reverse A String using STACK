@@ -1,0 +1,32 @@
+
+
+#include <iostream>
+#include<stack>
+#include<string.h>
+
+using namespace std;
+void Rev(char *C,int n)
+{
+stack<char> S;
+for(int i=0;i<n;i++)
+{
+    S.push(C[i]);
+}
+
+for(int i=0;i<n;i++)
+{
+    C[i]=S.top();  //overwrite the index
+    S.pop();        //clear stack
+}
+}
+int main()
+{
+    char C[50];
+    cout<<"Enter the String"<<endl;
+    gets(C);
+    Rev(C,strlen(C));
+    cout<<C<<endl;
+    
+  
+    
+}
