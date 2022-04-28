@@ -1,0 +1,39 @@
+
+#include <bits/stdc++.h>
+
+using namespace std;
+void Sol(int arr[],int n)
+{
+    stack<int>s;
+    int res[n];
+     
+    for(int i=n-1;i>=0;i--)                                                     //going through the array
+    {
+        if(!s.empty())                                                          //if stack is not empty
+        { 
+            while(!s.empty()&&s.top()<=arr[i])                                   //run till stack is not empty or s.top() is less than arr[i]
+            {
+                s.pop();                                                          //keep poping
+            }
+            
+        }
+            res[i]=s.empty() ? -1:s.top();                                       //store result as top or -1 depending upon the situation
+            s.push(arr[i]);                                                      // push array element
+        
+    }
+  
+    
+    for(int i=0;i<n;i++)
+    {
+        cout<<arr[i]<<" ---> "<<res[i]<<endl;                                         //print array element  and result
+    }
+}
+int main()
+{
+    int arr[] = { 11, 13, 21, 3 };
+    int n = sizeof(arr) / sizeof(arr[0]);
+ 
+    // Function call
+    Sol(arr, n);
+    return 0;
+}
