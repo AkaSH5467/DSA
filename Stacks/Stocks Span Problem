@@ -1,0 +1,35 @@
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+void Sol(int price[],int n,int S[])
+{
+    stack<int>St;
+    St.push(0);
+     S[0]=1;
+    
+    for(int i=1;i<n;i++)
+    {
+        if(!St.empty())
+        {
+            while(!St.empty()&&price[St.top()]<=price[i])
+            {
+                St.pop();
+               
+            }
+        }
+        S[i] = St.empty() ? (i+1) : (i-St.top());
+        St.push(i);
+    }
+    for (int i = 0; i < n; i++)
+      {  cout << S[i] << " ";}
+}
+
+int main()
+{
+    int arr[]={10, 4, 5, 90, 120, 80};
+    int n=sizeof(arr)/sizeof(arr[0]);
+    int S[n];
+    Sol(arr,n,S);
+}
