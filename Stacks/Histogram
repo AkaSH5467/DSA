@@ -1,0 +1,69 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+int solution(vector<int> & height )
+{
+    int n = height.size();
+    stack<int>s;
+    int ls[n];
+    int Rs[n];
+    
+    for(int i=0;i<n;i++)
+    {
+        while(!s.empty()&&height[s.top()]>=height[i])
+        {
+            s.pop();
+            
+        }
+        if(s.empty())
+        {
+            ls[i]=0;
+        }
+        else{
+            ls[i]=s.top()+1;
+        }
+        
+        s.push(i);
+    }
+    
+    while(!s.empty())
+    {
+        s.pop();
+    }
+    
+        for(int i=n-1;i>=0;i--)
+    {
+       while (!s.empty() && height[s.top()] >= height[i])
+        {
+            s.pop();
+            
+        }
+        if(s.empty())
+        {
+            Rs[i]=n-1;
+        }
+        else{
+            Rs[i]=s.top()-1;
+        }
+        
+        s.push(i);
+    }
+    
+    int Maximum=0;
+    for(int i=0;i<n;i++)
+    {
+        Maximum=max(Maximum,(Rs[i]-ls[i]+1)*height[i]);
+    }
+    
+  return Maximum;
+   
+}
+
+int main()
+{
+    vector<int> arr = {2, 1, 5, 6, 2, 3, 1};
+    
+    cout<<solution(arr)<<endl;
+
+    return 0;
+}
