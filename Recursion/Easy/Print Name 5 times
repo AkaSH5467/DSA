@@ -1,0 +1,25 @@
+#include <iostream>
+
+using namespace std;
+
+int n=0;
+
+void fun()
+{
+    
+    if(n>=6)
+    {
+        return;
+    }
+    cout<<"AKASH"<<endl;\
+    n++;
+    fun();
+
+}
+
+int main()
+{
+ 
+    fun();
+    return 0;
+}
