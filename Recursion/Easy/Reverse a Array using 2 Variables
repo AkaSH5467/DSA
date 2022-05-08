@@ -1,0 +1,32 @@
+
+
+#include <iostrea>
+
+using namespace std;
+
+
+void fun(int l,int r,int arr[],int n)
+{
+
+   if(l<r)
+   {
+       
+       return ;
+   }
+   swap(arr[l],arr[r]);
+   fun(l+1,r-1,arr,n);
+  
+   
+  
+   
+}
+
+int main()
+{
+   int arr[]={2,3,4,5,6,7};
+   int n = sizeof(arr)/sizeof(arr[0]);
+   
+   cout<<fun(0,n-1,arr,6);
+
+    return 0;
+}
