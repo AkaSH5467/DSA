@@ -1,0 +1,83 @@
+#include <iostream>
+using namespace std;
+#define size 10
+int A[size];
+int front = -1;
+int rear = -1;
+bool isempty()
+{
+    if(front=-1&&rear==-1)
+    {
+        return 1;
+    }
+    else{
+        return 0;
+    }
+}
+void Enqueue(int n)
+{
+    if(rear==size-1)
+    {
+        cout<<"Queue is Full "<<endl;
+    }
+    else{
+        if(front<0)
+        {
+            front = 0;
+        }
+        rear++;
+        A[rear]=n;
+    }
+}
+
+void Dequeue() {
+   if (front == rear) {
+      front = rear = -1;
+      return ;
+      
+   } 
+   else {
+      cout<<"Element deleted from queue is : "<< A[front] <<endl;
+      front ++ ;
+     
+   }
+}
+void ShowTop()
+{
+    if(isempty())
+    {
+        cout<<"Queue is Empty"<<endl;
+        cout<<"-1"<<endl;
+    }
+    else{
+        cout<<"The Element is"<<A[front]<<endl;
+    }
+}
+
+void Display(int front)
+{
+    if(isempty())
+    {
+        cout<<"The Queue is Empty"<<endl;
+    }
+    
+    for(int i=front;i<=rear;i++)
+    {
+        cout<<" "<<A[i]<<" ";
+    }
+}
+
+
+int main()
+{
+    Enqueue(12);
+    Enqueue(38);
+    Enqueue(32);
+    Enqueue(4);
+    Display(front);
+    
+    Dequeue();
+    
+    Display(front);
+    return 0;
+}
