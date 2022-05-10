@@ -1,0 +1,116 @@
+/******************************************************************************
+
+                              Online C++ Compiler.
+               Code, Compile, Run and Debug C++ program online.
+Write your code in this editor and press "Run" button to compile and execute it.
+
+*******************************************************************************/
+
+#include <iostream>
+using namespace std;
+
+struct Node{
+    int data;
+    Node *link;
+};
+
+Node *front=NULL;
+Node *rear=NULL;
+
+bool isempty()
+{
+    if(front==NULL&&rear==NULL)
+    {
+        return 1;
+    }
+    
+    else{
+        return 0;
+    }
+}
+
+void Enqueue(int d)
+{
+    Node *ptr=new Node();
+    ptr->data=d;
+    ptr->link=NULL;
+    
+    if(front==NULL)
+    {
+        front=ptr;
+        rear=ptr;
+    }
+    else
+    {
+        rear->link=ptr;
+        rear=ptr;
+    }
+}
+
+void Dequeue()
+{
+    if(isempty())
+    {
+        cout<<"Queue is Empty";
+        
+    }
+    
+    else
+    {
+        if(front==rear)
+        {
+            free(front);
+            front=rear=NULL;
+        }
+        else
+        {
+            
+            Node *temp=front;
+           
+            
+            front=front->link;
+            free(temp);
+            
+        }
+    }
+}
+
+void ShowFront()
+{
+    if(isempty())
+    {
+        cout<<"Empty Queue"<<endl;
+    }
+    
+    else{
+        cout<<front->data<<endl;
+    }
+}
+void Display(int front)
+{
+    if(isempty())
+    {
+        cout<<"Empty Queue"<<endl;
+    }
+    
+    else{
+        Node *temp=front;
+        
+        while(temp!=NULL)
+        {
+            cout<<temp->data<<endl;
+            temp=temp->link;
+        }
+    }
+}
+
+int main()
+{
+   Enqueue(3);
+   Enqueue(5);
+   Enqueue(5);
+   Enqueue(5);
+   Enqueue(5);
+   Display(front);
+    return 0;
+}
