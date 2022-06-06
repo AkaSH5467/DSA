@@ -1,0 +1,84 @@
+#include <iostream>
+
+using namespace std;
+
+struct Node{
+    int data;
+    Node *left;
+    Node *right;
+};
+Node* root=NULL;
+
+Node* GetNew(int d)
+{
+    Node* ptr = new Node();
+    ptr->data = d;
+    ptr->right = NULL;
+    ptr->left = NULL;
+    
+    return ptr;
+}
+
+Node* INS(Node* root, int d)
+{
+    if(root==NULL)
+    {
+        root=GetNew(d);
+        return root;
+    }
+    
+    else if(d<=root->data)
+    {
+        root->left = INS(root->left,d);
+    }
+    
+    else{
+        root->right = INS(root->right,d);
+    }
+    
+    return root;
+}
+
+bool Search(Node* root,int d)
+{
+    if(root==NULL)
+    {
+        return true;
+    }
+    else if(root->data==d)
+    {
+        return false;
+    }
+    else if(d<=root->data)
+    {
+        return Search(root->left,d);
+    }
+    else{
+       return Search(root->right,d);
+    }
+}
+
+int main()
+{
+    INS(root,32);
+    INS(root,25);
+    INS(root,3);
+    INS(root,10);
+    INS(root,36);
+    INS(root,37);
+    INS(root,39);
+    int m;
+    cout<<"Enter the Number to be seaarched";
+    cin>>m;
+    cout<<endl;
+    
+    if(Search(root,m)==true)
+    {
+        cout<<"FOUND"<<endl;
+    }
+    else{
+        cout<<"NOT FOUND"<<endl;
+    }
+
+    return 0;
+}
