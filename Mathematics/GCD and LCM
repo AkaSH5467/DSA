@@ -1,0 +1,46 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+int gcd(int m,int n)
+{
+    if(n==0)
+    {
+        return m;
+        
+    }
+    
+    return gcd(n,m%n);
+}
+
+int LCM(int m,int n)
+{
+    return (m*n)/gcd(m,n);
+}
+
+int main()
+{
+    int n;
+    cin>>n;
+    
+    int m;
+    cin>>m;
+    
+   /* int res=min(n,m);
+    
+    while(res>0)
+    {
+        if(m%res==0&&n%res==0)
+        {
+            break;
+        }
+        res--;
+    }
+    
+    cout<<res<<endl;*/
+    int s = gcd(m,n);
+    cout<<s<<endl;
+    
+    int p = LCM(m,n);
+    cout<<p<<endl;
+    
+}
