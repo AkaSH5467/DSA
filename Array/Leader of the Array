@@ -1,0 +1,75 @@
+ 
+  o(n^2)
+ 
+#include <iostream>
+
+using namespace std;
+
+int main()
+{ int n;
+  cin>>n;
+  int a[n];
+  
+  for(int i=0;i<n;i++)
+  {
+      cin>>a[i];
+  }
+  
+  for(int i=0;i<n;i++)
+  {
+      bool noleader = false;
+      for(int j=i+1;j<n;j++)
+      {
+          if(a[i]<=a[j])
+          {
+            noleader=true;
+            break;
+            
+          }
+          
+      }
+      
+      if(noleader==false)
+      {
+          cout<<a[i]<<" ";
+      }
+  }
+    
+
+    return 0;
+}
+
+
+
+o(N)
+
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{ int n;
+  cin>>n;
+  int a[n];
+  
+  for(int i=0;i<n;i++)
+  {
+      cin>>a[i];
+  }
+  
+  int leader = a[n-1];
+  cout<<leader<<" ";
+  
+  for(int i=n-2;i<=0;i--)
+  {
+      if(leader<a[i])
+      {
+          leader=a[i];
+          cout<<leader<<" ";
+      }
+  }
+
+    return 0;
+}
+
