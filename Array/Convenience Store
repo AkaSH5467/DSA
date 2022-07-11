@@ -1,0 +1,57 @@
+#include <iostream>
+
+using namespace std;
+
+bool change(int arr[],float price)
+{/*
+    float cost[]= { 0.25,0.10,0.5,0.01};
+    float c=0.0;
+    long double sum=0.0;
+    for(int i=0;i<=4;i++)
+    
+    {
+            c=(a[i]*cost[i]);
+            sum=sum+c;
+
+    }
+    
+    cout<<c<<endl;*/
+    float sum=0.0;
+    
+    float a=arr[0]*0.25;
+    float b=arr[1]*0.10;
+    float c=arr[2]*0.5;
+    float d=arr[3]*0.01;
+    
+    sum=a+b+c+d;
+    
+    cout<<sum<<endl;
+    
+    if(sum>price)
+    {
+        return true;
+    }
+    else{
+        return false;
+    }
+    
+    
+}
+
+int main()
+{
+    
+    int arr[4];
+    for(int i=0;i<4;i++)
+    {
+        cin>>arr[i];
+    }
+    
+   float price;
+   cin>>price;
+    
+    
+    cout<< change(arr,price)<<endl;
+   
+    return 0;
+}
