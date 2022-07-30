@@ -1,0 +1,28 @@
+
+
+void left_view(Tree* root)
+{
+    queue<Tree*>Q;
+    Q.push(root);
+    while(!Q.empty())
+    {
+        int size = Q.size();
+        for(int i=1;i<=size;i++)
+        {
+            auto temp = Q.front();
+            Q.pop();
+            if(i==1)
+            {
+                cout<<temp->data<<" ";
+            }
+            
+            if(temp->left!=NULL){
+                Q.push(temp->left);
+            }
+            if(temp->right!=NULL){
+                Q.push(temp->right);
+            }
+        }
+    }
+}
+
