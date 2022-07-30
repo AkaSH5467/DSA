@@ -1,0 +1,22 @@
+void LevelTraverse(Tree* root)
+{
+    queue<Tree*>q;                  //queue for storing the elements
+    q.push(root);                   //pushing the root first
+    
+    while(!q.empty())              //run till queue is not empty
+    {
+        auto temp = q.front();       // take the front element in a temporary variable
+        q.pop();                      // pop that element
+        
+        cout<<temp->data<<" ";         //print the data
+        
+        if(temp->left!=NULL)         //check do temp variable have left subtree
+        {
+            q.push(temp->left);  //if yes, the push it
+        }
+        if(temp->right!=NULL)         //check do temp variable have right subtree
+        {
+            q.push(temp->right);  //if yes push 
+        }
+    }
+}
