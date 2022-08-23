@@ -1,0 +1,79 @@
+// USING ADJENCY MATRIX
+
+*******************************************************************************/
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    int n,m;
+    cin>>n>>m;
+    int adj[n+1][n+1];
+    int v,u;
+    
+    for(int i=0;i<m;i++)
+    {
+        cin>>v;
+        cin>>u;
+        adj[v][u]=1;
+        adj[u][v]=1;
+        
+    }
+
+    return 0;
+}
+/////////////////////////////********************************************************/////////////////////////
+
+/*USING ADJECNCY LIST */
+
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    int n,m;
+    cin>>n>>m;
+    int adj[n+1];
+    int v,u;
+    
+    for(int i=0;i<m;i++)
+    {
+        cin>>v;
+        cin>>u;
+        adj[u].push_back(v);
+        adj[v].push_back(u);
+        
+    }
+
+    return 0;
+}
+
+///////////////////////////////*************************************************///////////////////////////////////
+/*USING ADJENCY LISTS WHEN GRAPH IS WEIGHTED*/
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    int n,m,w;
+    cin>>n>>m;
+    int adj[n+1];
+    int v,u;
+    
+    for(int i=0;i<m;i++)
+    {
+        cin>>v>>w;;
+        cin>>u;
+        adj[u].push_back({v,w});
+        adj[v].push_back({u,w});
+        
+    }
+
+    return 0;
+}
