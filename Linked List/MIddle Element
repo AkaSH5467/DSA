@@ -1,0 +1,16 @@
+void findMiddle()
+{
+    Node* slow = head;
+    Node* fast = head;
+    if(head!=NULL){
+    while(fast->link!=NULL && fast!=NULL)
+    {
+        
+        fast = fast->link->link;
+        slow = slow->link;
+        
+    }
+    }
+   
+    cout<<slow->data<<endl;
+}
