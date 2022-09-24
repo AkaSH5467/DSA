@@ -1,0 +1,32 @@
+#include <iostream>
+
+using namespace std;
+
+int removeduplicates(int arr[],int n)
+{
+   int res=1;
+   for(int i=1;i<n;i++)
+   {
+       if(arr[i]!=arr[i-1])       //operates only when the both are not duplicate
+       {
+           arr[res]=arr[i];      //puts the number in a secquence overlooking the other integers
+           res++;                //increment the pointer
+       }
+   }
+   return res;
+}
+int main()
+{
+    int n;
+    cin>>n;
+    cout<<"Enter a Sorted array"<<endl;
+    int arr[n];
+    for(int i=0;i<n;i++)
+    {
+        cin>>arr[i];
+    }
+    
+    cout<<removeduplicates(arr,n)<<endl;
+
+    return 0;
+}
