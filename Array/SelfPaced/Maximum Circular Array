@@ -1,0 +1,53 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+int normal(int arr[],int n)
+{
+    int maxi=arr[0];
+    
+    int res=arr[0];
+    
+    for(int i=1;i<n;i++)
+    {
+        maxi=max(maxi+arr[i],arr[i]);
+        res=max(maxi,res);
+    }
+    
+    return res;
+}
+
+int maxcircular(int arr[],int n)
+{
+    int maximum=normal(arr,n);
+    if(maximum<0)
+    {
+        return maximum;
+    }
+    
+    int arr_sum=0;
+    for(int i=0;i<n;i++)
+    {
+        arr_sum+=arr[i];
+        arr[i]=-arr[i];
+    }
+    int max_cir=arr_sum+normal(arr,n);
+    return max(maximum,max_cir);
+}
+
+int main()
+{
+    int n;
+    cin>>n;
+    
+    int arr[n];
+    for(int i=0;i<n;i++)
+    {
+        cin>>arr[i];
+    }
+    
+    cout<<maxcircular(arr,n)<<endl;
+
+  
+
+    return 0;
+}
