@@ -1,0 +1,59 @@
+void insertTail(Node* &tail,Node* curr)
+{
+    tail->next=curr;
+    tail=curr;
+}
+Node* sortList(Node *head)
+{
+   Node* zeroHead=new Node(-1);
+   Node* zeroTail=zeroHead;
+
+   Node* OneHead=new Node(-1);
+   Node* OneTail=OneHead;
+
+   Node* TwoHead=new Node(-1);
+   Node* TwoTail=TwoHead;
+
+   Node* curr=head;
+   
+   while(curr!=NULL)
+   {
+       int val = curr->data;
+
+       if(val==0)
+       {
+           insertTail(zeroTail,curr);
+       }
+       else if(val==1)
+       {
+           insertTail(OneTail,curr);
+       } else if (val == 2) {
+         insertTail(TwoTail, curr);
+       }
+
+       curr = curr->next;
+   }
+
+   if(OneHead->next!=NULL)
+   {
+       zeroTail->next=OneHead->next;
+   }
+   else{
+       zeroTail->next=TwoHead->next;
+   }
+
+   OneTail->next=TwoHead->next;
+   TwoTail->next=NULL;
+
+   head=zeroHead->next;
+
+   delete zeroHead;
+   delete OneHead;
+   delete TwoHead;
+
+   return head;
+
+   
+
+   
+}
