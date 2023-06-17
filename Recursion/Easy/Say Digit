@@ -1,0 +1,34 @@
+#include <iostream>
+
+using namespace std;
+
+void sayDig(int dig,string arr[])
+{
+    if(dig==0)
+    {
+        return;
+    }
+    
+    int digit = dig%10;
+    
+    dig=dig/10;
+    
+    
+    
+    sayDig(dig,arr);
+    
+    cout<<arr[digit]<<endl;
+}
+
+int main()
+{
+    string arr[10]={"zero","One","two","Three","Four","five","Six","Seven","Eight","Nine"};
+    
+    int dig=0;
+    cout<<"Enter the number"<<endl;
+    cin>>dig;
+    
+    sayDig(dig,arr);
+
+    return 0;
+}
