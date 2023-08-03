@@ -1,0 +1,30 @@
+#include<iostream>
+#include<stack>
+#include<vector>
+
+using namespace std;
+
+int main()
+{
+    string str="Akash";
+    stack<char>st;
+
+    for(int i=0;i<str.length();i++)
+    {
+        int ch = str[i];
+        st.push(ch);
+    }
+
+    string org="";
+
+    while(!st.empty())
+    {
+        int ch = st.top();
+        org.push_back(ch);
+        st.pop();
+    }
+
+    cout<<org<<endl;
+    return 0;
+
+}
