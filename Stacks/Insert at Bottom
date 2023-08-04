@@ -1,0 +1,22 @@
+#include <bits/stdc++.h> 
+void solution(stack<int>& myStack, int x)
+{
+    if(myStack.empty())
+    {
+        myStack.push(x);
+        return;
+    }
+
+    int num = myStack.top();
+    myStack.pop();
+
+    solution(myStack,x);
+
+    myStack.push(num);
+}
+stack<int> pushAtBottom(stack<int>& myStack, int x) 
+{
+    
+    solution(myStack,x);
+    return  myStack;
+}
